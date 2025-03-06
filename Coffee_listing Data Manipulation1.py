@@ -50,3 +50,21 @@ print(coffee_listing.drop_duplicates(subset="coffee_type"))
 print(coffee_listing.groupby("coffee_type")["price per gram"].mean())
 
 print(coffee_listing.groupby("title")["coffee_type"].agg([min,max,sum]))
+
+print(coffee_listing.head(10))
+
+print(coffee_listing.pivot_table(values="price per gram",index="title"))
+
+print(coffee_listing.pivot_table(values="rating",index="coffee_type",columns="price per gram"))
+
+print(coffee_listing.pivot_table(values="rating",index="coffee_type",columns="price per gram",fill_value=0,margins=True))
+
+print(coffee_listing.head(20))
+
+coff_list=coffee_listing.set_index("coffee_type")
+
+print(coff_list)
+
+print(coff_list.reset_index())
+
+print(coff_list.reset_index(drop=True))
