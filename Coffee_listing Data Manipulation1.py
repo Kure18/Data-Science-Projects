@@ -68,3 +68,43 @@ print(coff_list)
 print(coff_list.reset_index())
 
 print(coff_list.reset_index(drop=True))
+
+print(coff_list.sort_index())
+
+print(coffee_listing.head())
+
+coff_ind=coffee_listing.set_index("weight").sort_index()
+print(coff_ind)
+
+coff_ind_rate=coffee_listing.set_index("rating").sort_index()
+print(coff_ind_rate)
+
+print(coff_ind_rate.iloc[2:5])
+
+import matplotlib.pyplot as plt
+coff_ind_rate["price per gram"].hist(bins=20)
+plt.show()
+
+avg_price=coff_ind_rate.groupby("coffee_type")["price per gram"].mean()
+print(avg_price)
+
+print(avg_price.plot(kind="bar",title="Mean",rot=90))
+plt.show()
+
+print(avg_price.plot(kind="bar",rot=90))
+plt.show()
+
+print(coffee_listing.plot(x="coffee_type",y="price per gram",kind="line",rot=45,title="Prices by kilogram"))
+plt.show()
+
+print(coffee_listing.isna())
+
+print(coffee_listing.isna().any())
+
+print(coffee_listing.isna().sum())
+
+print(coffee_listing.fillna(0))
+
+print(coffee_listing.isna().sum())
+
+print(coffee_listing.fillna(0))
