@@ -78,6 +78,36 @@ print(july.loc["Wolves"])
 august = players.set_index(["team","name"])
 print(august)
 
-print(august.loc[["Liverpool","Brentford"]])
+print(august.loc[["Brentford","Liverpool"]].sort_index())
 
-print(august.sort_index())
+print(august.loc["Aaron Hickey":"Virgil van Dijk"])
+
+print(august.loc[:,"web_name":"total_points"])
+
+print(august.iloc[4:50])
+
+print(august.iloc[:,2:4])
+
+import matplotlib.pyplot as plt
+players["now_cost"].hist(bins=20)
+plt.show()
+
+avg_min = players.groupby("team")["minutes"].mean()
+avg_min.plot(kind="bar",title="Average Minutes")
+plt.show()
+
+import matplotlib.pyplot as plt
+players.plot(x="now_cost",y="now_cost_rank_type",title="Players Value",rot=45,kind="scatter")
+plt.show()
+
+import matplotlib.pyplot as plt
+players["now_cost_rank"].hist(alpha=0.8)
+players["now_cost_rank_type"].hist(alpha=0.7)
+plt.legend(["N","T"])
+plt.show()
+
+print(players.isna())
+
+print(players.isna().any())
+
+print(players.isna().sum())
